@@ -15,7 +15,7 @@ function onSubmit(event) {
     Number(delayEl.value),
     Number(amountEl.value)
   );
-}
+};
 
 function showAllResults(delay, step, amount) {
   for (let i = 1, d = delay; i <= amount; i += 1, d += step) {

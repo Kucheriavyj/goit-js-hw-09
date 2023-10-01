@@ -64,7 +64,7 @@ function onStartTimer() {
   }
 
   intervalId = setInterval(timeLeft, TIME_INTERVAL, selectedTime);
-}
+};
 
 function timeLeft(time) {
   passTime = time - Date.now();
@@ -76,7 +76,7 @@ function timeLeft(time) {
   }
 
   showLeftTime(passTime);
-}
+};
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -95,7 +95,7 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
-}
+};
 
 function showLeftTime(pt) {
   const { days, hours, minutes, seconds } = convertMs(pt);
@@ -103,11 +103,11 @@ function showLeftTime(pt) {
   refs.hoursEl.textContent = addLeadingZero(hours);
   refs.minutesEl.textContent = addLeadingZero(minutes);
   refs.secondsEl.textContent = addLeadingZero(seconds);
-}
+};
 
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
-}
+};
 
 function setMarkupStyle() {
   refs.divTimerEl.style.display = 'flex';

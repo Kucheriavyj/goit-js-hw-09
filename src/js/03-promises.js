@@ -1,20 +1,19 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const refs = {
-  delayEl: document.querySelector('[name="delay"]'),
-  stepEl: document.querySelector('[name="step"]'),
-  amountEl: document.querySelector('[name="amount"]'),
-  formEl: document.querySelector('.form'),
-};
+const delayEl = document.querySelector('[name="delay"]');
+const stepEl = document.querySelector('[name="step"]');
+const amountEl = document.querySelector('[name="amount"]');
+const formEl = document.querySelector('.form');
 
-refs.formEl.addEventListener('submit', onSubmit);
 
-function onSubmit(e) {
-  e.preventDefault();
+formEl.addEventListener('submit', onSubmit);
+
+function onSubmit(event) {
+  event.preventDefault();
   showAllResults(
-    Number(refs.delayEl.value),
-    Number(refs.stepEl.value),
-    Number(refs.amountEl.value)
+    Number(stepEl.value),
+    Number(delayEl.value),
+    Number(amountEl.value)
   );
 }
 
@@ -22,7 +21,7 @@ function showAllResults(delay, step, amount) {
   for (let i = 1, d = delay; i <= amount; i += 1, d += step) {
     showPermiseResult(i, d);
   }
-}
+};
 
 function showPermiseResult(position, delay) {
   createPromise(position, delay)
@@ -32,7 +31,7 @@ function showPermiseResult(position, delay) {
     .catch(({ position, delay }) => {
       Notify.failure(`Rejected promise ${position} in ${delay}ms`);
     });
-}
+};
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -44,4 +43,4 @@ function createPromise(position, delay) {
       reject({ position, delay });
     }, delay);
   });
-}
+};
